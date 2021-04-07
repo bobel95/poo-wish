@@ -10,7 +10,6 @@ import javax.persistence.Id;
 
 @Getter @Setter
 @NoArgsConstructor
-@Entity
 public class UserModel {
 
     public UserModel(String name, String email, String phone) {
@@ -19,7 +18,6 @@ public class UserModel {
         this.phone = phone;
     }
 
-    @Id @GeneratedValue
     private long id;
 
     private String name;
