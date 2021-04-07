@@ -1,8 +1,10 @@
 package com.codecool.productservice.controller;
 
 import com.codecool.productservice.model.Product;
+import com.codecool.productservice.model.UserModel;
 import com.codecool.productservice.repository.ProductRepository;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 
 import java.util.List;
@@ -12,9 +14,11 @@ import java.util.List;
 public class ProductController {
 
     private final ProductRepository productRepository;
+    private final RestTemplate restTemplate;
 
-    public ProductController(ProductRepository productRepository) {
+    public ProductController(ProductRepository productRepository, RestTemplate restTemplate) {
         this.productRepository = productRepository;
+        this.restTemplate = restTemplate;
     }
 
 
