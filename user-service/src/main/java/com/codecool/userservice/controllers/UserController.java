@@ -3,6 +3,7 @@ package com.codecool.userservice.controllers;
 import com.codecool.ratingservice.model.User;
 import com.codecool.userservice.models.ResponseObject;
 import com.codecool.userservice.models.UserModel;
+import com.codecool.userservice.models.UserProducts;
 import com.codecool.userservice.models.UserRatings;
 import com.codecool.userservice.repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -25,9 +26,14 @@ public class UserController {
             UserRatings.class
         );
 
+        UserProducts products = restTemplate.getForObject(
+            "http://product-service/product/user/" + userId,
+            UserProducts.class
+        );
+
         UserModel user = userRepository.findById(userId).orElseThrow(IllegalArgumentException::new);
 
-        return new ResponseObject(user, ratings);
+        return new ResponseObject(user, ratings, products);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/user")

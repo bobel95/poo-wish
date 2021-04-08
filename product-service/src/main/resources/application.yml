@@ -1,0 +1,12 @@
+security:
+  user:
+    password: ${eureka.password}
+
+---
+spring:
+  profiles: heroku
+eureka:
+  instance:
+    hostname: ${DOMAIN_NAME}
+    nonSecurePort: 80
+  password: ${USER_PASSWORD:password}

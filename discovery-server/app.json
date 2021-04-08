@@ -1,0 +1,13 @@
+
+{
+  "name": "Eureka Server",
+  "description": "Eureka Server demo project.",
+  "website": "https://github.com/bobel95/poo-wish/tree/main/discovery-server",
+  "success_url": "/",
+  "env": {
+    "EUREKA_USER_PASSWORD": {
+      "description": "Password for the admin interface.",
+      "generator": "secret"
+    }
+  }
+}
