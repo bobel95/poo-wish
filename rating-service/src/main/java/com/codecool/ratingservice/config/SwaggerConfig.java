@@ -1,4 +1,4 @@
-package com.codecool.userservice.config;
+package com.codecool.ratingservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,9 +25,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiDetails() {
         return new ApiInfo(
-            "User Service API",
+            "Rating Service API",
             "",
-            "0.4",
+            "0.1",
             "Free to use",
             new Contact("Iulian Popa", "", "bobel2007@gmail.com"),
             "API license",

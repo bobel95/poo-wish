@@ -23,13 +23,13 @@ public class RatingController {
         return ratingRepository.findAll();
     }
 
-    @GetMapping("/{userId}/{ratingId}/{productId}")
-    public Rating getRatingByProductId(@PathVariable("productId") Long productId,
-                                       @PathVariable("userId") Long userId,
-                                       @PathVariable("ratingId") Long ratingId) {
-        return ratingRepository.findById(ratingId)
-                .orElseThrow(IllegalArgumentException::new);
-    }
+//    @GetMapping("/{userId}/{ratingId}/{productId}")
+//    public Rating getRatingByProductId(@PathVariable("productId") Long productId,
+//                                       @PathVariable("userId") Long userId,
+//                                       @PathVariable("ratingId") Long ratingId) {
+//        return ratingRepository.findById(ratingId)
+//                .orElseThrow(IllegalArgumentException::new);
+//    }
 
     @GetMapping("/{userId}")
     public UserRatings getRatingsByUser(@PathVariable("userId") Long userId) {
