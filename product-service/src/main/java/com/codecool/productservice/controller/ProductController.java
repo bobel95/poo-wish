@@ -14,11 +14,11 @@ import java.util.List;
 public class ProductController {
 
     private final ProductRepository productRepository;
-    private final RestTemplate restTemplate;
 
-    public ProductController(ProductRepository productRepository, RestTemplate restTemplate) {
+
+    public ProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;
-        this.restTemplate = restTemplate;
+
     }
 
 
