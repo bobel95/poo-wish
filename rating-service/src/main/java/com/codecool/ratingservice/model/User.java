@@ -10,10 +10,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
 public class User {
 
-    @Id @GeneratedValue
     private long id;
 
     private String name;

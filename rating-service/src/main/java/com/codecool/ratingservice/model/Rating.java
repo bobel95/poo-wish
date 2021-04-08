@@ -21,6 +21,5 @@ public class Rating {
     private Long id;
     private int rating;
     private String comment;
-    private Long productId;
     private Long userId;
 }

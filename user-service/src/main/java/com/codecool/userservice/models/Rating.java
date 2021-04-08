@@ -1,4 +1,4 @@
-package com.codecool.ratingservice.model;
+package com.codecool.userservice.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,11 +13,10 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
-public class Product {
+public class Rating {
 
     private Long id;
-    private String title;
-    private String description;
+    private int rating;
+    private String comment;
     private Long userId;
 }

@@ -1,6 +1,7 @@
 package com.codecool.ratingservice.controller;
 
 import com.codecool.ratingservice.model.Rating;
+import com.codecool.ratingservice.model.UserRatings;
 import com.codecool.ratingservice.repository.RatingRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,8 +32,10 @@ public class RatingController {
     }
 
     @GetMapping("/{userId}")
-    public List<Rating> getRatingsByUser(@PathVariable("userId") Long userId) {
-        return ratingRepository.findAllByUserId(userId);
+    public UserRatings getRatingsByUser(@PathVariable("userId") Long userId) {
+        return new UserRatings(
+            ratingRepository.findAllByUserId(userId)
+        );
     }
 
     @PostMapping
@@ -41,14 +44,14 @@ public class RatingController {
         return ratingRepository.save(rating);
     }
 
-    @PutMapping("/{userId}/{ratingId}")
-    public Rating updateProduct(@PathVariable("ratingId") Long ratingId, @RequestBody Rating rating) {
+    @PutMapping()
+    public Rating updateProduct(@RequestBody Rating rating) {
 
         return ratingRepository.save(rating);
     }
 
-    @DeleteMapping("/{userId}/{ratingId}")
-    public void deleteRating(@PathVariable("ratingId") Long ratingId, @PathVariable String userId) {
+    @DeleteMapping("/{ratingId}")
+    public void deleteRating(@PathVariable("ratingId") Long ratingId) {
 
         ratingRepository.deleteById(ratingId);
     }

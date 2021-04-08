@@ -20,11 +20,7 @@ public class ProductServiceApplication {
         SpringApplication.run(ProductServiceApplication.class, args);
     }
 
-    @Bean
-    @LoadBalanced
-    public RestTemplate getRestTemplate() {
-        return new RestTemplate();
-    }
+
 
     @Bean
     CommandLineRunner commandLineRunner(ProductRepository productRepository) {

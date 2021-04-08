@@ -1,9 +1,13 @@
 package com.codecool.userservice.controllers;
 
+import com.codecool.ratingservice.model.User;
+import com.codecool.userservice.models.ResponseObject;
 import com.codecool.userservice.models.UserModel;
+import com.codecool.userservice.models.UserRatings;
 import com.codecool.userservice.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 @AllArgsConstructor
@@ -11,10 +15,19 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserRepository userRepository;
+    private final RestTemplate restTemplate;
 
-    @RequestMapping("/user/{email}")
-    public UserModel getUserById (@PathVariable("email") String email) {
-        return userRepository.findByEmail(email).orElseThrow(IllegalArgumentException::new);
+    @RequestMapping("/user/{userId}")
+    public ResponseObject getUserById (@PathVariable("userId") Long userId) {
+
+        UserRatings ratings = restTemplate.getForObject(
+            "http://rating-service/rating/" + userId,
+            UserRatings.class
+        );
+
+        UserModel user = userRepository.findById(userId).orElseThrow(IllegalArgumentException::new);
+
+        return new ResponseObject(user, ratings);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/user")
