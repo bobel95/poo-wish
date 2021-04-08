@@ -2,6 +2,7 @@ package com.codecool.productservice.controller;
 
 import com.codecool.productservice.model.Product;
 import com.codecool.productservice.model.UserModel;
+import com.codecool.productservice.model.UserProducts;
 import com.codecool.productservice.repository.ProductRepository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -21,7 +22,6 @@ public class ProductController {
 
     }
 
-
     @GetMapping
     public List<Product> getProducts() {
         return productRepository.findAll();
@@ -34,8 +34,10 @@ public class ProductController {
     }
 
     @GetMapping("/user/{userId}")
-    public List<Product> getProductsByUser(@PathVariable("userId") Long userId) {
-        return productRepository.findAllByUserId(userId);
+    public UserProducts getProductsByUser(@PathVariable("userId") Long userId) {
+        return new UserProducts(
+            productRepository.findAllByUserId(userId)
+        );
     }
 
     @PostMapping
